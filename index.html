@@ -109,14 +109,7 @@ function narrationParts(text,who){
    return readings[key][0];
   }).trim();
   if(spoken)parts.push({text:spoken});
-  for(const key of newTerms){
-   const [shortName,fullName]=readings[key];
-   if(who===0){
-    parts.push({key,text:shortName+'의 풀네임, '+fullName+' 맞나요?',caption:key+'의 풀네임, '+spokenNames[key]+' 맞나요?'});
-   }else{
-    parts.push({key,text:shortName+'의 풀네임은 '+fullName+'입니다.'});
-   }
-  }
+  // 풀네임 설명 음성은 제거 (약어는 한글 발음으로만 읽음)
  }
  return parts;
 }
