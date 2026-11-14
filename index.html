@@ -121,8 +121,8 @@ function narrationParts(text,who){
  return parts;
 }
 const characterSpeech=[
- {pitch:1.48,rate:1.05}, // 신입
- {pitch:0.87,rate:0.94}  // 선배
+ {pitch:1.78,rate:1.03}, // 신입 (새롬): 높고 밝은 여성 톤
+ {pitch:0.82,rate:0.94}  // 선배: 낮은 톤
 ];
 function narrate(text,who,token,advance,fallbackMs){
  const parts=narrationParts(text,who),voices=synth.getVoices().filter(v=>/^ko(?:[-_]|$)/i.test(v.lang));
@@ -136,7 +136,7 @@ function narrate(text,who,token,advance,fallbackMs){
   else if(index>1 && parts[index-2].caption){showCaption(who,text)}
   const utterance=new SpeechSynthesisUtterance(part.text);
   utterance.lang='ko-KR';if(characterVoice)utterance.voice=characterVoice;
-  utterance.pitch=who===0 && /[?？]$/.test(part.text.trim()) ? 1.54 : characterSpeech[who].pitch;utterance.rate=characterSpeech[who].rate;
+  utterance.pitch=who===0 && /[?？]$/.test(part.text.trim()) ? 1.88 : characterSpeech[who].pitch;utterance.rate=characterSpeech[who].rate;
   let finished=false;
   const finish=(failed=false)=>{
    if(finished||token!==version)return;
